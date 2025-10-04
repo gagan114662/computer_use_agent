@@ -1,15 +1,33 @@
 # Claude Code Autonomous Agent
 
-A **fully autonomous coding agent** that takes project requirements and delivers working code without human intervention. You just verify via tests.
+A **fully autonomous coding agent** that takes a one-line brief, asks intelligent questions, generates a detailed PRD, and delivers 100% working code without human intervention.
+
+## 🚀 Ultimate Workflow
+
+```bash
+./auto_prd_builder.sh 'Build a password strength validator'
+```
+
+**What happens:**
+1. 🧠 Analyzes your brief intelligently
+2. 💬 Asks clarifying questions (inputs, outputs, edge cases)
+3. 📋 Generates comprehensive PRD
+4. 👤 Shows PRD for your approval
+5. 🤖 Builds project 100% autonomously
+6. ✅ Delivers working code with tests - **100% correctness**
+
+**You just verify via tests. That's it.**
 
 ## Features
 
-- **Fully Autonomous Development**: Give requirements → Get working code
+- **Intelligent PRD Generation**: One-line brief → Detailed requirements
+- **Smart Questioning**: Asks only what's needed based on project type
+- **Fully Autonomous Development**: No babysitting needed
 - **Test-Driven Development**: Writes tests first, then implements code
 - **Auto-Debug**: Runs tests, finds bugs, fixes them automatically
 - **Computer Control**: Can take screenshots, click, type, and control your computer
-- **No Babysitting**: Works independently until all tests pass
 - **Zero Hardcoding**: Tests import from codebase, never duplicate logic
+- **100% Correctness**: Iterates until all tests pass
 
 ## Quick Start
 
@@ -66,38 +84,68 @@ claude
 
 ## Autonomous Development Workflow
 
-### The Magic: Zero-Intervention Coding
+### Method 1: Fully Automated (Recommended)
 
-1. **You write requirements** → `PROJECT_REQUIREMENTS.md`
-2. **Agent reads & understands** → Plans implementation
-3. **Agent writes tests FIRST** → No hardcoding, only imports
-4. **Agent implements code** → Makes tests pass
-5. **Agent runs tests** → Automatically
-6. **Agent debugs failures** → Fixes bugs autonomously
-7. **Agent iterates** → Until all tests pass ✅
-8. **You verify** → Review tests to confirm correctness
-
-### Usage: Autonomous Mode
+**One command does everything:**
 
 ```bash
-# 1. Create your requirements
+./auto_prd_builder.sh 'Build a URL shortener'
+```
+
+**Interactive session:**
+```
+🤖 INTELLIGENT PRD GENERATOR
+
+📝 Your Brief: Build a URL shortener
+
+📋 I need some clarifications:
+
+✓ What input types/formats will the system accept?
+  → Long URLs as strings
+
+✓ What should the outputs look like?
+  → Short URL string (8 characters)
+
+  Any specific edge cases? [Standard]
+  → Invalid URLs, duplicate URLs
+
+🔨 Generating detailed PRD...
+✅ PRD saved
+
+👤 Proceed with autonomous development? (y/N) y
+
+🤖 Agent working autonomously...
+   ✓ Writing tests FIRST (imports only)
+   ✓ Implementing code
+   ✓ Running pytest
+   ✓ Debugging failures
+   ✓ Iterating until 100% pass
+
+✅ COMPLETE - All tests passing!
+```
+
+### Method 2: Step-by-Step Control
+
+```bash
+# Step 1: Generate PRD only
+python3 interactive_prd.py 'Build a JSON validator'
+
+# Step 2: Review/edit PRD
+cat PROJECT_REQUIREMENTS.md
+
+# Step 3: Run autonomous development
+./run_autonomous.sh
+```
+
+### Method 3: Manual PRD
+
+```bash
+# 1. Create requirements manually
 cp PROJECT_REQUIREMENTS.template.md PROJECT_REQUIREMENTS.md
-# Edit with your project requirements
+nano PROJECT_REQUIREMENTS.md
 
 # 2. Run autonomous agent
 ./run_autonomous.sh
-
-# 3. Agent works independently until complete
-# - Writes tests (imports only, no hardcoding)
-# - Implements code
-# - Runs pytest automatically
-# - Debugs and fixes failures
-# - Repeats until all tests pass
-
-# 4. Verify the results
-pytest tests/ -v
-# Review tests in tests/ folder
-# Review code in src/ folder
 ```
 
 ### Example: What The Agent Does
@@ -164,21 +212,46 @@ Open my browser and search for Python tutorials
 
 ```
 computer_use_agent/
-├── SYSTEM_INSTRUCTIONS.md          # Core autonomous agent instructions
-├── PROJECT_REQUIREMENTS.template.md # Template for your requirements
-├── PROJECT_REQUIREMENTS.example.md  # Example calculator project
-├── run_autonomous.sh               # Autonomous mode runner
-├── autonomous_agent.py             # Python orchestrator
-├── requirements.txt                # Python dependencies
-├── mcp_config.json                 # MCP server configuration
-├── demo_screenshot.py              # Screenshot demo
-├── test_pyautogui_basic.py        # PyAutoGUI test
+├── 🚀 MAIN SCRIPTS
+│   ├── auto_prd_builder.sh         # ONE COMMAND TO RULE THEM ALL
+│   ├── interactive_prd.py          # Intelligent PRD generator
+│   ├── prd_generator.py            # Simple PRD generator
+│   └── run_autonomous.sh           # Autonomous development runner
 │
-├── src/                            # Your code goes here (auto-generated)
-│   └── *.py
+├── 📋 CONFIGURATION & GUIDES
+│   ├── SYSTEM_INSTRUCTIONS.md      # Core autonomous agent instructions
+│   ├── USAGE_GUIDE.md              # Complete usage guide
+│   ├── PROJECT_REQUIREMENTS.template.md  # Template
+│   ├── PROJECT_REQUIREMENTS.example.md   # Example
+│   ├── requirements.txt            # Python dependencies
+│   └── mcp_config.json             # MCP server configuration
 │
-└── tests/                          # Tests go here (auto-generated)
-    └── test_*.py
+├── 🧪 TESTING & DEMOS
+│   ├── demo_screenshot.py          # Screenshot demo
+│   └── test_pyautogui_basic.py     # PyAutoGUI test
+│
+├── 📦 AUTO-GENERATED (by agent)
+│   ├── src/                        # Your code
+│   │   └── *.py
+│   └── tests/                      # Your tests
+│       └── test_*.py
+```
+
+## Quick Reference
+
+### For Your Son (Simple)
+
+```bash
+# Build anything with one command
+./auto_prd_builder.sh 'what you want to build'
+
+# Answer questions
+# Review PRD
+# Say 'y' to proceed
+# Wait for completion
+# Verify: pytest tests/ -v
+
+# Done! ✅
 ```
 
 ## Key Principles
