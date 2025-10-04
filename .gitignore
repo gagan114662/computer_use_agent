@@ -37,8 +37,9 @@ depcode/
 ipop/
 quant_pipeline/
 video_search_agent/
-*.md
-!README.md
+SETUP_COMPLETE.md
+API_TEST_RESULTS.md
+COMPLETION_REPORT.md
 test_*.py
 !test_pyautogui_basic.py
 demo_apis.py
