@@ -1,12 +1,15 @@
 # Claude Code Autonomous Agent
 
-A simple setup for using Claude Code CLI with computer control capabilities via MCP PyAutoGUI.
+A **fully autonomous coding agent** that takes project requirements and delivers working code without human intervention. You just verify via tests.
 
 ## Features
 
-- **Computer Control**: Claude can take screenshots, click, type, and control your computer
-- **Autonomous Actions**: Claude can analyze screens and decide what to do next
-- **Easy Setup**: Just clone and configure
+- **Fully Autonomous Development**: Give requirements → Get working code
+- **Test-Driven Development**: Writes tests first, then implements code
+- **Auto-Debug**: Runs tests, finds bugs, fixes them automatically
+- **Computer Control**: Can take screenshots, click, type, and control your computer
+- **No Babysitting**: Works independently until all tests pass
+- **Zero Hardcoding**: Tests import from codebase, never duplicate logic
 
 ## Quick Start
 
@@ -61,20 +64,90 @@ export ANTHROPIC_API_KEY="your-api-key-here"
 claude
 ```
 
-## What Can It Do?
+## Autonomous Development Workflow
 
-Claude can now:
-- Take screenshots and analyze them
-- Click buttons and UI elements
-- Type text into applications
-- Execute keyboard shortcuts
-- Scroll and navigate
-- Make autonomous decisions based on what it sees
+### The Magic: Zero-Intervention Coding
 
-## Example Usage
+1. **You write requirements** → `PROJECT_REQUIREMENTS.md`
+2. **Agent reads & understands** → Plans implementation
+3. **Agent writes tests FIRST** → No hardcoding, only imports
+4. **Agent implements code** → Makes tests pass
+5. **Agent runs tests** → Automatically
+6. **Agent debugs failures** → Fixes bugs autonomously
+7. **Agent iterates** → Until all tests pass ✅
+8. **You verify** → Review tests to confirm correctness
 
-In Claude Code CLI, try:
+### Usage: Autonomous Mode
 
+```bash
+# 1. Create your requirements
+cp PROJECT_REQUIREMENTS.template.md PROJECT_REQUIREMENTS.md
+# Edit with your project requirements
+
+# 2. Run autonomous agent
+./run_autonomous.sh
+
+# 3. Agent works independently until complete
+# - Writes tests (imports only, no hardcoding)
+# - Implements code
+# - Runs pytest automatically
+# - Debugs and fixes failures
+# - Repeats until all tests pass
+
+# 4. Verify the results
+pytest tests/ -v
+# Review tests in tests/ folder
+# Review code in src/ folder
+```
+
+### Example: What The Agent Does
+
+Given this requirement:
+```markdown
+## Requirement: Calculator
+- Add two numbers
+- Subtract two numbers
+- Handle division by zero
+```
+
+**Agent autonomously:**
+
+1. **Writes test first** (tests/test_calculator.py):
+```python
+from src.calculator import add, subtract, divide
+import pytest
+
+def test_add():
+    assert add(2, 3) == 5  # Imports from src, no hardcoding
+
+def test_divide_by_zero():
+    with pytest.raises(ZeroDivisionError):
+        divide(10, 0)
+```
+
+2. **Implements code** (src/calculator.py):
+```python
+def add(a, b):
+    return a + b
+
+def divide(a, b):
+    if b == 0:
+        raise ZeroDivisionError
+    return a / b
+```
+
+3. **Runs tests** → If fails, debugs and fixes automatically
+4. **Repeats** → Until all tests pass ✅
+
+### Interactive Mode (Manual Control)
+
+For step-by-step control:
+
+```bash
+claude
+```
+
+Then ask Claude to:
 ```
 Take a screenshot and tell me what you see
 ```
@@ -89,10 +162,38 @@ Open my browser and search for Python tutorials
 
 ## File Structure
 
-- `demo_screenshot.py` - Simple screenshot demo
-- `test_pyautogui_basic.py` - Test PyAutoGUI installation
-- `requirements.txt` - Python dependencies
-- `mcp_config.json` - MCP server configuration
+```
+computer_use_agent/
+├── SYSTEM_INSTRUCTIONS.md          # Core autonomous agent instructions
+├── PROJECT_REQUIREMENTS.template.md # Template for your requirements
+├── PROJECT_REQUIREMENTS.example.md  # Example calculator project
+├── run_autonomous.sh               # Autonomous mode runner
+├── autonomous_agent.py             # Python orchestrator
+├── requirements.txt                # Python dependencies
+├── mcp_config.json                 # MCP server configuration
+├── demo_screenshot.py              # Screenshot demo
+├── test_pyautogui_basic.py        # PyAutoGUI test
+│
+├── src/                            # Your code goes here (auto-generated)
+│   └── *.py
+│
+└── tests/                          # Tests go here (auto-generated)
+    └── test_*.py
+```
+
+## Key Principles
+
+### Test-Driven Development (TDD)
+✅ **Tests written FIRST**
+✅ **Tests import from src/** - Never duplicate logic
+✅ **Tests verify behavior** - Not implementation
+❌ **Never hardcode logic in tests**
+
+### Autonomous Operation
+✅ **No human intervention** - Works independently
+✅ **Auto-debug** - Finds and fixes bugs
+✅ **Iterative refinement** - Keeps trying until perfect
+✅ **Self-verification** - Runs tests automatically
 
 ## Troubleshooting
 
