@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-pyautogui": {
+      "command": "python",
+      "args": ["-m", "mcp_pyautogui"]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Screenshots
+*.png
+*.jpg
+*.jpeg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+files (1)/
+Dash/
+TermNet/
+aitutor_repo/
+api/
+depcode/
+ipop/
+quant_pipeline/
+video_search_agent/
+*.md
+!README.md
+test_*.py
+!test_pyautogui_basic.py
+demo_apis.py
+
+# Secrets
+.env
+*.key
